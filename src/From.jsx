@@ -5,9 +5,10 @@ function From() {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("user");
   const [gender, setGender] = useState("male");
+  const [rules, setRules] = useState(false);
 
   const loginHandler = (event) => {
-    console.log({ email, password, role, gender });
+    console.log({ email, password, role, gender, rules });
   };
 
   const emailHandler = (event) => {
@@ -24,6 +25,10 @@ function From() {
 
   const genderHandler = (e) => {
     setGender(e.target.value);
+  };
+
+  const rulesHandler = () => {
+    setRules((rules) => !rules);
   };
 
   return (
@@ -74,7 +79,7 @@ function From() {
           checked={gender === "other"}
         />
       </div>
-
+      <input type="checkbox" checked={rules} onChange={rulesHandler} />
       <button onClick={loginHandler}>Login</button>
     </div>
   );
