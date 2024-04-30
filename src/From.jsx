@@ -4,9 +4,10 @@ function From() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("user");
+  const [gender, setGender] = useState("male");
 
   const loginHandler = (event) => {
-    console.log({ email, password, role });
+    console.log({ email, password, role, gender });
   };
 
   const emailHandler = (event) => {
@@ -22,7 +23,7 @@ function From() {
   };
 
   const genderHandler = (e) => {
-    console.log(e.target.value);
+    setGender(e.target.value);
   };
 
   return (
@@ -45,23 +46,32 @@ function From() {
         <option value="admin">Admin</option>
       </select>
       <div>
+        <label htmlFor="male">Male</label>
         <input
           type="radio"
           name="gender"
+          id="male"
           value="male"
           onChange={genderHandler}
+          checked={gender === "male"}
         />
+        <label htmlFor="female">Female</label>
         <input
           type="radio"
           name="gender"
+          id="female"
           value="female"
           onChange={genderHandler}
+          checked={gender === "female"}
         />
+        <label htmlFor="other">Other</label>
         <input
           type="radio"
           name="gender"
+          id="other"
           value="other"
           onChange={genderHandler}
+          checked={gender === "other"}
         />
       </div>
 
