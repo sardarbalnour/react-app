@@ -1,51 +1,71 @@
 import { useState } from "react";
 
 function From() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("user");
-  const [gender, setGender] = useState("male");
-  const [rules, setRules] = useState(false);
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [role, setRole] = useState("user");
+  // const [gender, setGender] = useState("male");
+  // const [rules, setRules] = useState(false);
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+    role: "user",
+    gender: "male",
+    rules: false,
+  });
 
-  const loginHandler = (event) => {
-    console.log({ email, password, role, gender, rules });
+  const changeHandler = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    if (name === "rules") {
+      setForm((form) => ({ ...form, rules: !form.rules }));
+    } else {
+      setForm((form) => ({ ...form, [name]: value }));
+    }
   };
 
-  const emailHandler = (event) => {
-    setEmail(event.target.value);
+  const loginHandler = () => {
+    console.log(form);
   };
 
-  const passwordHandler = (e) => {
-    setPassword(e.target.value);
-  };
+  // const emailHandler = (event) => {
+  //   setEmail(event.target.value);
+  // };
 
-  const selectHandler = (e) => {
-    setRole(e.target.value);
-  };
+  // const passwordHandler = (e) => {
+  //   setPassword(e.target.value);
+  // };
 
-  const genderHandler = (e) => {
-    setGender(e.target.value);
-  };
+  // const selectHandler = (e) => {
+  //   setRole(e.target.value);
+  // };
 
-  const rulesHandler = () => {
-    setRules((rules) => !rules);
-  };
+  // const genderHandler = (e) => {
+  //   setGender(e.target.value);
+  // };
+
+  // const rulesHandler = () => {
+  //   setRules((rules) => !rules);
+  // };
 
   return (
     <div>
       <input
         type="text"
         placeholder="Email"
-        value={email}
-        onChange={emailHandler}
+        name="email"
+        value={form.email}
+        onChange={changeHandler}
       />
       <input
         type="password"
         placeholder="password"
-        value={password}
-        onChange={passwordHandler}
+        name="password"
+        value={form.password}
+        onChange={changeHandler}
       />
-      <select value={role} onChange={selectHandler}>
+      <select value={form.role} name="role" onChange={changeHandler}>
         <option value="user">User</option>
         <option value="writer">Writer</option>
         <option value="admin">Admin</option>
@@ -57,8 +77,8 @@ function From() {
           name="gender"
           id="male"
           value="male"
-          onChange={genderHandler}
-          checked={gender === "male"}
+          onChange={changeHandler}
+          checked={form.gender === "male"}
         />
         <label htmlFor="female">Female</label>
         <input
@@ -66,8 +86,8 @@ function From() {
           name="gender"
           id="female"
           value="female"
-          onChange={genderHandler}
-          checked={gender === "female"}
+          onChange={changeHandler}
+          checked={form.gender === "female"}
         />
         <label htmlFor="other">Other</label>
         <input
@@ -75,11 +95,16 @@ function From() {
           name="gender"
           id="other"
           value="other"
-          onChange={genderHandler}
-          checked={gender === "other"}
+          onChange={changeHandler}
+          checked={form.gender === "other"}
         />
       </div>
-      <input type="checkbox" checked={rules} onChange={rulesHandler} />
+      <input
+        type="checkbox"
+        checked={form.rules}
+        name="rules"
+        onChange={changeHandler}
+      />
       <button onClick={loginHandler}>Login</button>
     </div>
   );
