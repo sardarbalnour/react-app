@@ -25,7 +25,8 @@ function From() {
     }
   };
 
-  const loginHandler = () => {
+  const submitHandler = (e) => {
+    e.preventDefault();
     console.log(form);
   };
 
@@ -51,61 +52,63 @@ function From() {
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Email"
-        name="email"
-        value={form.email}
-        onChange={changeHandler}
-      />
-      <input
-        type="password"
-        placeholder="password"
-        name="password"
-        value={form.password}
-        onChange={changeHandler}
-      />
-      <select value={form.role} name="role" onChange={changeHandler}>
-        <option value="user">User</option>
-        <option value="writer">Writer</option>
-        <option value="admin">Admin</option>
-      </select>
-      <div>
-        <label htmlFor="male">Male</label>
+      <form onSubmit={submitHandler}>
         <input
-          type="radio"
-          name="gender"
-          id="male"
-          value="male"
+          type="text"
+          placeholder="Email"
+          name="email"
+          value={form.email}
           onChange={changeHandler}
-          checked={form.gender === "male"}
         />
-        <label htmlFor="female">Female</label>
         <input
-          type="radio"
-          name="gender"
-          id="female"
-          value="female"
+          type="password"
+          placeholder="password"
+          name="password"
+          value={form.password}
           onChange={changeHandler}
-          checked={form.gender === "female"}
         />
-        <label htmlFor="other">Other</label>
+        <select value={form.role} name="role" onChange={changeHandler}>
+          <option value="user">User</option>
+          <option value="writer">Writer</option>
+          <option value="admin">Admin</option>
+        </select>
+        <div>
+          <label htmlFor="male">Male</label>
+          <input
+            type="radio"
+            name="gender"
+            id="male"
+            value="male"
+            onChange={changeHandler}
+            checked={form.gender === "male"}
+          />
+          <label htmlFor="female">Female</label>
+          <input
+            type="radio"
+            name="gender"
+            id="female"
+            value="female"
+            onChange={changeHandler}
+            checked={form.gender === "female"}
+          />
+          <label htmlFor="other">Other</label>
+          <input
+            type="radio"
+            name="gender"
+            id="other"
+            value="other"
+            onChange={changeHandler}
+            checked={form.gender === "other"}
+          />
+        </div>
         <input
-          type="radio"
-          name="gender"
-          id="other"
-          value="other"
+          type="checkbox"
+          checked={form.rules}
+          name="rules"
           onChange={changeHandler}
-          checked={form.gender === "other"}
         />
-      </div>
-      <input
-        type="checkbox"
-        checked={form.rules}
-        name="rules"
-        onChange={changeHandler}
-      />
-      <button onClick={loginHandler}>Login</button>
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
 }
