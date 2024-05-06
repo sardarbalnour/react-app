@@ -8,14 +8,14 @@ function App() {
   return (
     <div>
       <From />
-      {/* <Counter />
+      <Counter />
       <Header />
       <Banner
         title="Sardar website"
         description="This is a programming website."
         numOfStudents={5002}
       />
-      <CourseList /> */}
+      <CourseList />
     </div>
   );
 }
