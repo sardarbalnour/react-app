@@ -3,8 +3,20 @@ import "./courseCard.css";
 
 function CourseCard({ data: { name, description } }) {
   const [selected, setSelected] = useState(true);
+
+  const cssStyle = {
+    color: "red",
+    border: "red 1px solid",
+    margin: "10px",
+    backgroundColor: "silver",
+  };
+
+  const selectedStyle = {
+    color: "green",
+  };
+
   return (
-    <li className={`container ${selected && "selected"}`}>
+    <li style={selected ? selectedStyle : cssStyle}>
       <h4>{name}</h4>
       <p>{description}</p>
       <button onClick={() => setSelected((s) => !s)}>Change</button>
