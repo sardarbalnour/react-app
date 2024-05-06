@@ -16,7 +16,7 @@ function CourseCard({ data: { name, description } }) {
   };
 
   return (
-    <li style={selected ? selectedStyle : cssStyle}>
+    <li>
       <h4>{name}</h4>
       <p>{description}</p>
       <button onClick={() => setSelected((s) => !s)}>Change</button>
