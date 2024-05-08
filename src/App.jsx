@@ -7,15 +7,15 @@ import From from "./From.jsx";
 function App() {
   return (
     <div>
-      <From />
+      {/* <From />
       <Counter />
-      <Header />
+      <Header /> */}
       <Banner
         title="Sardar website"
         description="This is a programming website."
         numOfStudents={5002}
       />
-      <CourseList />
+      {/* <CourseList /> */}
     </div>
   );
 }
